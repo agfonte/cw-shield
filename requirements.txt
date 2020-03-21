@@ -7,7 +7,6 @@ cryptography==2.8
 decorator==4.4.2
 enum34==1.1.10
 future==0.18.2
-futures==3.3.0
 idna==2.9
 ipaddress==1.0.23
 keyring==10.6.0
