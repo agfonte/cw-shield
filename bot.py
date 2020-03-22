@@ -7,11 +7,10 @@ import os
 #                     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 # logger = logging.getLogger()
 
-bot = telebot.TeleBot(os.environ.get('HOME'))
+bot = telebot.TeleBot(os.environ.get('TOKEN'))
 
 saveMessagesChatId = -1001428707880
 chatWarsBotId = 408101137
-
 
 @bot.message_handler(commands=['mine'])
 def send_welcome(message):
