@@ -1,13 +1,14 @@
 import telebot
 import os
 
-bot = telebot.TeleBot(os.environ.get('TOKEN'))
-
+#bot = telebot.TeleBot(os.environ.get('TOKEN'))
+bot = telebot.TeleBot("1086641008:AAHL-Ab5YAt4Tu5CpyWc4xRZvtpkRxi1aGs")
 saveMessagesChatId = -1001428707880
 chatWarsBotId = 408101137
 
 @bot.message_handler(commands=['mine'])
 def send_welcome(message):
+    print("aofnn")
     # Check it was a reply
     replyToMessage = getattr(message, 'reply_to_message')
     if not replyToMessage:
@@ -53,3 +54,4 @@ def send_welcome(message):
 
 
 bot.polling()
+print("done")
