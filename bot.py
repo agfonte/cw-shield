@@ -1,11 +1,5 @@
 import telebot
 import os
-# import logging
-
-# Enabling logging
-# logging.basicConfig(level=logging.INFO,
-#                     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
-# logger = logging.getLogger()
 
 bot = telebot.TeleBot(os.environ.get('TOKEN'))
 
@@ -14,39 +8,34 @@ chatWarsBotId = 408101137
 
 @bot.message_handler(commands=['mine'])
 def send_welcome(message):
-    # Check it was a replying
+    # Check it was a reply
     replyToMessage = getattr(message, 'reply_to_message')
     if not replyToMessage:
-        # logger.error("DIDNT FOUND REPLY MESSAGE")
         return
 
-    # Check the replying was forwarded
+    # Check the reply was to forwarded message
     forwardFrom = getattr(replyToMessage, 'forward_from')
     if not forwardFrom:
-        # logger.error("DIDNT FOUND FORWARD FROM")
         return
 
     # Check it was forwarded from chatwars
     if forwardFrom.id != chatWarsBotId:
-        # logger.error("WASNT FORWARD FROM CHATWARS")
         return
 
-    # Check it has text
+    # Check it has text attribute
     replyToMessageText = getattr(replyToMessage, 'text')
     if not replyToMessageText:
-        # logger.error("DIDNT FOUND REPLY TO MESSAGE TEXT")
         return
 
-    # Check the text match Current buyer is: You
+    # Check the text match "Current buyer is: You"
     if replyToMessageText.find("Current buyer is: You") == -1:
-        # logger.error("DIDNT FOUND CURRENT BUYER IS YOU IN THE TEXT")
         return
 
     bidLines = replyToMessageText.splitlines();
     shieldMessageArray = []
     for line in bidLines:
-        if line.find("Current buyer is:") != -1:
-            # logger.error(line)
+        # Replace Current buyer is: You with Current buyer is: @{who_forwarded_message_username}
+        if line.find("Current buyer is: You") != -1:
             shieldMessageArray.append("Current buyer is: @"+replyToMessage.from_user.username)
             continue
 
