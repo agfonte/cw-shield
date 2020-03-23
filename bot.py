@@ -6,6 +6,11 @@ bot = telebot.TeleBot("1086641008:AAHL-Ab5YAt4Tu5CpyWc4xRZvtpkRxi1aGs")
 saveMessagesChatId = -1001428707880
 chatWarsBotId = 408101137
 
+@bot.message_handler(commands=['start'])
+def send_welcome(message):
+    bot.reply_to(message, "Howdy, how are you doing?")
+
+
 @bot.message_handler(commands=['mine'])
 def send_welcome(message):
     print("aofnn")
@@ -52,6 +57,5 @@ def send_welcome(message):
     bot.delete_message(message.chat.id, message.message_id)
     bot.delete_message(message.chat.id, replyToMessage.message_id)
 
-
-bot.polling()
 print("done")
+bot.polling()
