@@ -1,5 +1,11 @@
 import telebot
 import os
+import logging
+
+
+
+logger = logging.getLogger("[app]")
+logger.debug('Starting app...')
 
 #bot = telebot.TeleBot(os.environ.get('TOKEN'))
 bot = telebot.TeleBot("1086641008:AAHL-Ab5YAt4Tu5CpyWc4xRZvtpkRxi1aGs")
@@ -8,12 +14,13 @@ chatWarsBotId = 408101137
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
+    logger.debug('/start message')
     bot.reply_to(message, "Howdy, how are you doing?")
 
 
 @bot.message_handler(commands=['mine'])
 def send_welcome(message):
-    print("aofnn")
+    print("/mine")
     # Check it was a reply
     replyToMessage = getattr(message, 'reply_to_message')
     if not replyToMessage:
