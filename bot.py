@@ -2,8 +2,6 @@ import telebot
 import os
 import logging
 
-
-
 logger = logging.getLogger("[app]")
 logger.debug('Starting app...')
 
